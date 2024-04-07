@@ -56,7 +56,8 @@ async def send_meme(ctx):
 
 
 
-bot.run('MTIyNjQ2MzEyNjc1MzY0NDY0NQ.GyowA7.dL4gLcSYNKT2Qcx0Dy0kPZtQSpIH2VurJuQAx8')
+bot.run('ваш токен
+)
 
 
 
