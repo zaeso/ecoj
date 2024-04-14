@@ -1,0 +1,6 @@
+settings = {
+    "prefix": ">",
+    "TOKEN": ""
+}
+
+
