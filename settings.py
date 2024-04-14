@@ -1,6 +1,6 @@
 settings = {
     "prefix": ">",
-    "TOKEN": ""
+    "TOKEN": "Сюда токен дс"
 }
 
 
