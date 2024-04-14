@@ -43,17 +43,24 @@ async def quiz(ctx):
     quiz_info = "Добро пожаловать в викторину по теме изменения климата! Ответьте на вопросы, чтобы узнать больше о важных аспектах изменения климата."
     await ctx.send(quiz_info)
 
-    question = random.choice(list(questions_answers.keys()))
-    await ctx.send(question)
+    num_questions = 3  
+    correct_answers = 0
 
-    def check(m):
-        return m.author == ctx.author and m.content.lower() == questions_answers[question].lower()
+    for _ in range(num_questions):
+        question = random.choice(list(questions_answers.keys()))
+        await ctx.send(question)
 
-    try:
-        response = await bot.wait_for('message', timeout=30.0, check=check)
-        await ctx.send('Правильный ответ!')
-    except asyncio.TimeoutError:
-        await ctx.send('Время вышло, правильный ответ: {}'.format(questions_answers[question]))
+        def check(m):
+            return m.author == ctx.author and m.content.lower() == questions_answers[question].lower()
+
+        try:
+            response = await bot.wait_for('message', timeout=30.0, check=check)
+            await ctx.send('Правильный ответ!')
+            correct_answers += 1
+        except asyncio.TimeoutError:
+            await ctx.send('Время вышло, правильный ответ: {}'.format(questions_answers[question]))
+
+    await ctx.send(f'Викторина завершена! Вы ответили правильно на {correct_answers} из {num_questions} вопросов.')
 
 
 @bot.command()
